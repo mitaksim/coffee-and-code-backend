@@ -16,6 +16,9 @@ module.exports = {
             coffee: coffee_id,
             date,
         });
+        
+        // Pour avoir toutes les infos de l'utilisateur et du café choisi pas que leur id
+        await booking.populate('coffee').populate('user').execPopulate();
 
         return res.json(booking);
     }
