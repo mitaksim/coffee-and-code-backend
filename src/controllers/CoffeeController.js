@@ -4,6 +4,18 @@ const Coffee = require('../models/Coffee');
 const User = require('../models/User');
 
 module.exports = {
+
+    // Liste les cafés selon la technologie choisi
+    async index(req, res) {
+        const { tech } = req.query;
+
+        const coffees = await Coffee.find({ techs: tech });
+
+        return res.json(coffees);
+    },
+
+
+
     async store(req, res) {
         // Requêtes
         const { filename } = req.file;

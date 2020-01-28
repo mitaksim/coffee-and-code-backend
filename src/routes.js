@@ -14,6 +14,7 @@ const upload = multer(uploadConfig);
 
 // Routes
 routes.post('/sessions', SessionController.store);
+routes.get('/coffees', CoffeeController.index);
 routes.post('/coffees', upload.single('thumbnail'), CoffeeController.store);
 
 // On doit exporter les routes pour qu'on ait accès dans app
