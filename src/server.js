@@ -8,7 +8,7 @@ const app = express();
 // Premier paramètre: "/",
 // Deuxième paramètre: une fonction qui reçoit deux autres paramètres (req, res)
 app.get('/', (req, res) => {
-    return res.send('Hello World');
+    return res.json({ message: 'Hello World' });
 });
 
 // 3. Port qui va écouter l'app
