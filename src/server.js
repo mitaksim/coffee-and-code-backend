@@ -1,10 +1,18 @@
 // 1. Import d'express
 const express = require('express');
+// Import mongoose
+const mongoose = require('mongoose');
 // Import des routes
 const routes = require('./routes');
 
 // 2. Création de l'app avec express
 const app = express();
+
+// On connect mongoose à la base de données (MongoDB)
+mongoose.connect('mongodb+srv://code-and-coffee:codeandcoffee@teste-8wvzd.mongodb.net/test?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
 
 // 5. Pour qu'express retourne en format json json
 app.use(express.json());
