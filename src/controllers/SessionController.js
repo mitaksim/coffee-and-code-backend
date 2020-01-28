@@ -11,8 +11,13 @@ module.exports = {
     async store(req, res) {
         //const email = req.body.email;
         const { email } = req.body;
-
-        const user = await User.create({ email });
+        
+        // On essaie de trouver le mail de l'utilisateur
+        let user = await User.findOne({ email });
+        // si on le retrouve pas, on le crée
+        if (!user) {
+            user = await User.create({ email });
+        }
 
         return res.json(user);
     }
