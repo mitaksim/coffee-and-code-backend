@@ -2,10 +2,19 @@
 // C'est lui qui va recevoir la requête, la traiter et envoyer une réponse
 // Méthodes des controllers: index = liste de sessions, show = session unique, store = creation de session, update = mise à jour de la session et destroy = effacer une session
 
+// On aura besoin du model qu'on a crée pour l'utilisateur
+const User = require('../models/User');
+
 module.exports = {
-    // on souhaite créer une session
-    store(req, res) {
-        return res.json({ message: 'Hello'});
+    // Session de LOGIN
+    // async/await pour que la fonction ait le temps d'être éxecutée avant de passer à la prochaine étape
+    async store(req, res) {
+        //const email = req.body.email;
+        const { email } = req.body;
+
+        const user = await User.create({ email });
+
+        return res.json(user);
     }
 };
 
